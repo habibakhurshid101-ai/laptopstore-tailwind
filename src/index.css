@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-primary: #1a56db;
+  --color-brand-secondary: #7c3aed;
+  --color-brand-third: #0ea5e9;
+  --color-brand-fourth: #0f2544;
+  --color-brand-accent: #06d6a0;
+
+  --color-bg-main: #080e1c;
+  --color-bg-card: #0d1526;
+
+  --color-text-primary: #f1f5f9;
+  --color-text-secondary: #cbd5e1;
+  --color-text-muted: #64748b;
+  --color-text-focus: #60a5fa;
+  --color-text-highlight: #0ea5e9;
+
+  --color-border-primary: rgba(255, 255, 255, 0.10);
+  --color-border-secondary: rgba(255, 255, 255, 0.06);
+  --color-border-muted: rgba(255, 255, 255, 0.03);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+
+  --font-sans: 'Inter', 'Outfit', system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-bg-main text-text-primary font-sans antialiased leading-relaxed;
+  }
+  h1, h2, h3, h4 { @apply font-extrabold tracking-tight; }
+}
+
+@layer utilities {
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-brand-primary to-brand-third bg-clip-text text-transparent;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-2 px-4 py-1.5 bg-brand-primary/15 border border-brand-primary/30 text-text-focus text-sm font-bold rounded-full w-fit;
+  }
+
+  .lg-button {
+    @apply inline-flex items-center justify-center gap-2 px-10 py-5 bg-brand-primary text-white font-bold rounded-md hover:bg-brand-primary/90 hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(26,86,219,0.35)] transition-all duration-300;
+  }
+
+  .border-button {
+    @apply bg-transparent border-2 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white;
+  }
+
+  .hero-image-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-16px); }
+  }
+
+  .standard-card {
+    @apply bg-bg-card border border-border-primary rounded-md overflow-hidden transition-all duration-300 w-[280px] max-w-full;
+  }
+  .standard-card:hover {
+    @apply -translate-y-1.5 border-brand-primary shadow-[0_16px_40px_rgba(0,0,0,0.45)];
+  }
+}
