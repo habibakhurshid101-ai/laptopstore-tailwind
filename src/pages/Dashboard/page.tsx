@@ -52,6 +52,28 @@ function Dashboard() {
     return () => clearInterval(interval);
   }, []);
 
+  // Add reveal animation on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      const reveals = document.querySelectorAll('.reveal');
+      reveals.forEach((element) => {
+        const windowHeight = window.innerHeight;
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150;
+
+        if (elementTop < windowHeight - elementVisible) {
+          element.classList.remove('opacity-0', 'translate-y-8');
+          element.classList.add('opacity-100', 'translate-y-0');
+        }
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check on initial load
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const showToast = (message: string) => {
     alert(message);
   };

@@ -9,6 +9,9 @@ import Signup from './pages/Signup/page';
 import Dashboard from './pages/Dashboard/page';
 import Services from './pages/Services/page';
 import Contact from './pages/Contact/page';
+import Cart from './pages/Cart/page';
+import Reviews from './pages/Reviews/page';
+import Profile from './pages/Profile/page';
 
 // Home Component (inline)
 function Home() {
@@ -123,10 +126,10 @@ function Home() {
       </section>
 
       {/* FEATURED PRODUCTS */}
-      <section className="py-20 px-6 md:px-12 max-w-7xl mx-auto reveal bg-bg-card border-y border-border-muted">
+      <section className="py-20 px-6 md:px-12 max-w-7xl mx-auto opacity-0 translate-y-8 transition-all duration-700 reveal bg-gray-50 dark:bg-[#0d1526] border-y border-black/5 dark:border-white/5">
         <div className="text-center mb-12 space-y-2">
           <h2 className="text-3xl font-bold">Featured Laptops</h2>
-          <p className="text-text-secondary text-lg">Top-rated machines engineered for excellence</p>
+          <p className="text-slate-600 dark:text-slate-400 text-lg">Top-rated machines engineered for excellence</p>
         </div>
         <div className="flex flex-wrap justify-center gap-8 mb-12">
           {[
@@ -135,22 +138,22 @@ function Home() {
             { img: '/img10.png', name: 'Lenovo ThinkPad X1', specs: 'AMD Ryzen 9 · 32GB RAM · 1TB SSD · 4K OLED', price: 'Rs. 420,000', badge: 'New', grad: 'sky', color: 'sky' },
             { img: '/img11.png', name: 'ASUS ROG Zephyrus', specs: 'AMD Ryzen 9 · RTX 4080 · 32GB RAM · 2TB SSD', price: 'Rs. 520,000', badge: 'Sale', grad: 'green', color: 'red' },
           ].map((prod, i) => (
-            <div key={i} className="standard-card !w-[300px]">
+            <div key={i} className="bg-gray-50 dark:bg-[#0d1526] border border-black/10 dark:border-white/10 rounded-md overflow-hidden transition-all duration-300 w-[300px] max-w-full hover:-translate-y-1.5 hover:border-[#1a56db] hover:shadow-[0_16px_40px_rgba(0,0,0,0.45)] group">
               <div className={`relative h-[220px] p-8 flex items-center justify-center bg-radial-gradient`}>
                 <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle,_var(--grad-color),_transparent)]" style={{ '--grad-color': prod.grad === 'blue' ? '#1a56db' : prod.grad === 'purple' ? '#7c3aed' : prod.grad === 'sky' ? '#0ea5e9' : '#06d6a0' } as React.CSSProperties}></div>
                 <img src={prod.img} alt={prod.name} className="relative z-10 max-h-full object-contain group-hover:scale-110 transition-transform duration-700" />
-                <span className={`absolute top-3 right-3 px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full text-white ${prod.color === 'green' ? 'bg-brand-accent' : prod.color === 'purple' ? 'bg-brand-secondary' : prod.color === 'sky' ? 'bg-brand-third' : 'bg-red-500'}`}>
+                <span className={`absolute top-3 right-3 px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full text-white ${prod.color === 'green' ? 'bg-[#06d6a0]' : prod.color === 'purple' ? 'bg-[#7c3aed]' : prod.color === 'sky' ? 'bg-[#0ea5e9]' : 'bg-red-500'}`}>
                   {prod.badge}
                 </span>
               </div>
               <div className="p-6 space-y-4">
                 <div>
-                  <h3 className="text-lg font-bold text-text-primary">{prod.name}</h3>
-                  <p className="text-xs text-text-muted mt-1">{prod.specs}</p>
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-slate-50">{prod.name}</h3>
+                  <p className="text-xs text-slate-500 dark:text-slate-500 mt-1">{prod.specs}</p>
                 </div>
-                <div className="flex items-center justify-between pt-4 border-t border-border-muted">
-                  <span className="text-lg font-extrabold text-brand-primary">{prod.price}</span>
-                  <button className="px-4 py-2 bg-brand-primary text-white text-xs font-bold rounded-sm hover:bg-brand-primary/90 transition-all">
+                <div className="flex items-center justify-between pt-4 border-t border-black/5 dark:border-white/5">
+                  <span className="text-lg font-extrabold text-[#1a56db]">{prod.price}</span>
+                  <button className="px-4 py-2 bg-[#1a56db] text-white text-xs font-bold rounded-sm hover:bg-[#1a56db]/90 transition-all">
                     Add to Cart
                   </button>
                 </div>
@@ -160,7 +163,7 @@ function Home() {
         </div>
         <div className="text-center">
           <button 
-            className="border-button px-10 py-4 font-bold rounded-md transition-all duration-300"
+            className="inline-flex items-center justify-center gap-2 px-10 py-4 bg-transparent border-2 border-[#1a56db] text-[#1a56db] font-bold rounded-md hover:bg-[#1a56db] hover:text-white transition-all duration-300"
             onClick={() => navigate('/products')}
           >
             View All Products →
@@ -169,8 +172,8 @@ function Home() {
       </section>
 
       {/* STATS */}
-      <section className="py-20 px-6 md:px-12 max-w-7xl mx-auto reveal">
-        <div className="flex flex-wrap justify-center gap-10 p-10 bg-bg-card border border-border-primary rounded-md">
+      <section className="py-20 px-6 md:px-12 max-w-7xl mx-auto opacity-0 translate-y-8 transition-all duration-700 reveal">
+        <div className="flex flex-wrap justify-center gap-10 p-10 bg-gray-50 dark:bg-[#0d1526] border border-black/10 dark:border-white/10 rounded-md">
           {[
             { val: '80K+', label: 'Happy Customers' },
             { val: '500+', label: 'Laptop Models' },
@@ -179,18 +182,18 @@ function Home() {
             { val: '15+', label: 'Brands Available' },
           ].map((stat, i) => (
             <div key={i} className="flex flex-col items-center gap-1 min-w-[120px]">
-              <h2 className="text-3xl font-extrabold text-brand-primary">{stat.val}</h2>
-              <p className="text-[11px] text-text-muted font-bold uppercase tracking-widest">{stat.label}</p>
+              <h2 className="text-3xl font-extrabold text-[#1a56db]">{stat.val}</h2>
+              <p className="text-[11px] text-slate-500 dark:text-slate-500 font-bold uppercase tracking-widest">{stat.label}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* WHY LAPELITE */}
-      <section className="py-20 px-6 md:px-12 max-w-7xl mx-auto reveal">
+      <section className="py-20 px-6 md:px-12 max-w-7xl mx-auto opacity-0 translate-y-8 transition-all duration-700 reveal">
         <div className="text-center mb-16 space-y-2">
           <h2 className="text-3xl font-bold">Why Choose LapElite?</h2>
-          <p className="text-text-secondary text-lg">We deliver more than hardware — we deliver confidence</p>
+          <p className="text-slate-600 dark:text-slate-400 text-lg">We deliver more than hardware — we deliver confidence</p>
         </div>
         <div className="flex flex-wrap justify-center gap-5">
           {[
@@ -200,12 +203,12 @@ function Home() {
             { icon: '🎧', title: '24/7 Support', desc: 'Expert tech team ready via chat, phone, or walk-in service center.' },
           ].map((item, i) => (
             <div key={i} className="w-[260px] p-8 flex flex-col items-center text-center space-y-4">
-              <div className="w-16 h-16 flex items-center justify-center bg-brand-primary/10 border border-brand-primary/25 rounded-full text-3xl">
+              <div className="w-16 h-16 flex items-center justify-center bg-[#1a56db]/10 border border-[#1a56db]/25 rounded-full text-3xl">
                 {item.icon}
               </div>
               <div className="space-y-2">
                 <h3 className="text-lg font-bold">{item.title}</h3>
-                <p className="text-text-secondary text-xs leading-relaxed">{item.desc}</p>
+                <p className="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">{item.desc}</p>
               </div>
             </div>
           ))}
@@ -213,20 +216,20 @@ function Home() {
       </section>
 
       {/* NEWSLETTER */}
-      <section className="py-20 px-6 md:px-12 max-w-7xl mx-auto reveal">
-        <div className="p-10 md:p-12 bg-[linear-gradient(135deg,rgba(26,86,219,0.18),rgba(14,165,233,0.10))] border border-brand-primary/25 rounded-md flex flex-col lg:flex-row justify-between items-center gap-8">
+      <section className="py-20 px-6 md:px-12 max-w-7xl mx-auto opacity-0 translate-y-8 transition-all duration-700 reveal">
+        <div className="p-10 md:p-12 bg-[linear-gradient(135deg,rgba(26,86,219,0.18),rgba(14,165,233,0.10))] border border-[#1a56db]/25 rounded-md flex flex-col lg:flex-row justify-between items-center gap-8">
           <div className="space-y-2 text-center lg:text-left">
-            <h2 className="text-3xl font-extrabold text-text-primary leading-tight">Stay Ahead of the Curve</h2>
-            <p className="text-text-secondary text-sm font-medium">Exclusive deals, new arrivals, and tech insights — delivered weekly.</p>
+            <h2 className="text-3xl font-extrabold text-slate-900 dark:text-slate-50 leading-tight">Stay Ahead of the Curve</h2>
+            <p className="text-slate-600 dark:text-slate-400 text-sm font-medium">Exclusive deals, new arrivals, and tech insights — delivered weekly.</p>
           </div>
           <form className="flex flex-wrap justify-center gap-3 w-full lg:w-auto" onSubmit={handleSubscribe}>
             <input 
               type="email" 
               placeholder="Enter your email address" 
               required 
-              className="w-[280px] max-w-full px-4 py-3 bg-white/5 border border-border-primary rounded-sm text-text-primary outline-none focus:border-brand-primary transition-all"
+              className="w-[280px] max-w-full px-4 py-3 bg-white/5 border border-black/10 dark:border-white/10 rounded-sm text-slate-900 dark:text-slate-50 outline-none focus:border-[#1a56db] transition-all"
             />
-            <button type="submit" className="px-8 py-3 bg-brand-primary text-white text-xs font-bold rounded-sm hover:translate-y-[-1px] transition-all shadow-[0_6px_20px_rgba(26,86,219,0.35)] uppercase tracking-widest">
+            <button type="submit" className="px-8 py-3 bg-[#1a56db] text-white text-xs font-bold rounded-sm hover:translate-y-[-1px] transition-all shadow-[0_6px_20px_rgba(26,86,219,0.35)] uppercase tracking-widest">
               Subscribe →
             </button>
           </form>
@@ -238,7 +241,7 @@ function Home() {
 
 function App() {
   return (
-    <div className="min-h-screen bg-bg-main">
+    <div className="min-h-screen bg-white dark:bg-[#080e1c] text-slate-900 dark:text-slate-50">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -249,6 +252,9 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/services" element={<Services />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/reviews" element={<Reviews />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
       <Footer />
     </div>

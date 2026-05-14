@@ -10,7 +10,7 @@ function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-6 py-12 bg-bg-main text-text-primary">
+    <div className="min-h-screen flex items-center justify-center px-6 py-25 bg-bg-main text-text-primary">
       <div className="w-full max-w-md space-y-12 animate-in fade-in zoom-in duration-700">
         <div className="text-center space-y-4">
           <h2 className="text-4xl font-extrabold tracking-tight">Welcome Back 👋</h2>
