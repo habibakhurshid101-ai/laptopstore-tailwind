@@ -62,8 +62,7 @@ function Dashboard() {
         const elementVisible = 150;
 
         if (elementTop < windowHeight - elementVisible) {
-          element.classList.remove('opacity-0', 'translate-y-8');
-          element.classList.add('opacity-100', 'translate-y-0');
+          element.classList.add('visible');
         }
       });
     };

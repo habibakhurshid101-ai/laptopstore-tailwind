@@ -24,6 +24,7 @@
   --color-text-primary: #f1f5f9;
   --color-text-secondary: #cbd5e1;
   --color-text-muted: #64748b;
+  --color-text-focus: #60a5fa;
   --color-border-primary: rgba(255, 255, 255, 0.10);
   --color-border-muted: rgba(255, 255, 255, 0.03);
 }

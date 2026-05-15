@@ -11,25 +11,27 @@ function Navbar() {
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
-    if (savedTheme) {
-      setTheme(savedTheme);
-      if (savedTheme === 'dark') {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
-    } else {
-      // Default to dark mode to preserve current UI
-      setTheme('dark');
+    const defaultTheme = savedTheme ?? 'dark'; // Default to dark mode (blue theme)
+
+    setTheme(defaultTheme);
+    if (defaultTheme === 'dark') {
       document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
     }
+    localStorage.setItem('theme', defaultTheme);
   }, []);
 
   const toggleTheme = () => {
     const newTheme = theme === 'dark' ? 'light' : 'dark';
     setTheme(newTheme);
-    document.documentElement.classList.toggle('dark');
+
+    if (newTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+
     localStorage.setItem('theme', newTheme);
   };
 
@@ -155,13 +157,13 @@ function Navbar() {
               >
                  About Us
               </Link>
-              <Link 
+              {/* <Link 
                 to="/contact"
                 onClick={closeAllDropdowns}
                 className="block px-4 py-3 text-xs font-bold uppercase tracking-widest text-text-secondary hover:bg-brand-primary/10 hover:text-brand-primary transition-all"
               >
                  Contact
-              </Link>
+              </Link> */}
               <Link 
                 to="/reviews"
                 onClick={closeAllDropdowns}

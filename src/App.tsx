@@ -126,10 +126,10 @@ function Home() {
       </section>
 
       {/* FEATURED PRODUCTS */}
-      <section className="py-20 px-6 md:px-12 max-w-7xl mx-auto opacity-0 translate-y-8 transition-all duration-700 reveal bg-gray-50 dark:bg-[#0d1526] border-y border-black/5 dark:border-white/5">
+      <section className="py-20 px-6 md:px-12 max-w-7xl mx-auto reveal bg-bg-card border-y border-border-muted">
         <div className="text-center mb-12 space-y-2">
           <h2 className="text-3xl font-bold">Featured Laptops</h2>
-          <p className="text-slate-600 dark:text-slate-400 text-lg">Top-rated machines engineered for excellence</p>
+          <p className="text-text-secondary text-lg">Top-rated machines engineered for excellence</p>
         </div>
         <div className="flex flex-wrap justify-center gap-8 mb-12">
           {[
@@ -138,22 +138,22 @@ function Home() {
             { img: '/img10.png', name: 'Lenovo ThinkPad X1', specs: 'AMD Ryzen 9 · 32GB RAM · 1TB SSD · 4K OLED', price: 'Rs. 420,000', badge: 'New', grad: 'sky', color: 'sky' },
             { img: '/img11.png', name: 'ASUS ROG Zephyrus', specs: 'AMD Ryzen 9 · RTX 4080 · 32GB RAM · 2TB SSD', price: 'Rs. 520,000', badge: 'Sale', grad: 'green', color: 'red' },
           ].map((prod, i) => (
-            <div key={i} className="bg-gray-50 dark:bg-[#0d1526] border border-black/10 dark:border-white/10 rounded-md overflow-hidden transition-all duration-300 w-[300px] max-w-full hover:-translate-y-1.5 hover:border-[#1a56db] hover:shadow-[0_16px_40px_rgba(0,0,0,0.45)] group">
+            <div key={i} className="standard-card !w-[300px]">
               <div className={`relative h-[220px] p-8 flex items-center justify-center bg-radial-gradient`}>
                 <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle,_var(--grad-color),_transparent)]" style={{ '--grad-color': prod.grad === 'blue' ? '#1a56db' : prod.grad === 'purple' ? '#7c3aed' : prod.grad === 'sky' ? '#0ea5e9' : '#06d6a0' } as React.CSSProperties}></div>
                 <img src={prod.img} alt={prod.name} className="relative z-10 max-h-full object-contain group-hover:scale-110 transition-transform duration-700" />
-                <span className={`absolute top-3 right-3 px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full text-white ${prod.color === 'green' ? 'bg-[#06d6a0]' : prod.color === 'purple' ? 'bg-[#7c3aed]' : prod.color === 'sky' ? 'bg-[#0ea5e9]' : 'bg-red-500'}`}>
+                <span className={`absolute top-3 right-3 px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full text-white ${prod.color === 'green' ? 'bg-brand-accent' : prod.color === 'purple' ? 'bg-brand-secondary' : prod.color === 'sky' ? 'bg-brand-third' : 'bg-red-500'}`}>
                   {prod.badge}
                 </span>
               </div>
               <div className="p-6 space-y-4">
                 <div>
-                  <h3 className="text-lg font-bold text-slate-900 dark:text-slate-50">{prod.name}</h3>
-                  <p className="text-xs text-slate-500 dark:text-slate-500 mt-1">{prod.specs}</p>
+                  <h3 className="text-lg font-bold text-text-primary">{prod.name}</h3>
+                  <p className="text-xs text-text-muted mt-1">{prod.specs}</p>
                 </div>
-                <div className="flex items-center justify-between pt-4 border-t border-black/5 dark:border-white/5">
-                  <span className="text-lg font-extrabold text-[#1a56db]">{prod.price}</span>
-                  <button className="px-4 py-2 bg-[#1a56db] text-white text-xs font-bold rounded-sm hover:bg-[#1a56db]/90 transition-all">
+                <div className="flex items-center justify-between pt-4 border-t border-border-muted">
+                  <span className="text-lg font-extrabold text-brand-primary">{prod.price}</span>
+                  <button className="px-4 py-2 bg-brand-primary text-white text-xs font-bold rounded-sm hover:bg-brand-primary/90 transition-all">
                     Add to Cart
                   </button>
                 </div>
@@ -163,7 +163,7 @@ function Home() {
         </div>
         <div className="text-center">
           <button 
-            className="inline-flex items-center justify-center gap-2 px-10 py-4 bg-transparent border-2 border-[#1a56db] text-[#1a56db] font-bold rounded-md hover:bg-[#1a56db] hover:text-white transition-all duration-300"
+            className="border-button px-10 py-4 font-bold rounded-md transition-all duration-300"
             onClick={() => navigate('/products')}
           >
             View All Products →
@@ -172,8 +172,8 @@ function Home() {
       </section>
 
       {/* STATS */}
-      <section className="py-20 px-6 md:px-12 max-w-7xl mx-auto opacity-0 translate-y-8 transition-all duration-700 reveal">
-        <div className="flex flex-wrap justify-center gap-10 p-10 bg-gray-50 dark:bg-[#0d1526] border border-black/10 dark:border-white/10 rounded-md">
+      <section className="py-20 px-6 md:px-12 max-w-7xl mx-auto reveal">
+        <div className="flex flex-wrap justify-center gap-10 p-10 bg-bg-card border border-border-primary rounded-md">
           {[
             { val: '80K+', label: 'Happy Customers' },
             { val: '500+', label: 'Laptop Models' },
